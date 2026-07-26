@@ -1,0 +1,343 @@
+{
+  "steps": [
+    {
+      "id": 1,
+      "key": "cameras",
+      "title": "Choose your cameras",
+      "icon": "camera",
+      "nextLabel": "Next: Choose your plan"
+    },
+    {
+      "id": 2,
+      "key": "plan",
+      "title": "Choose your plan",
+      "icon": "shield",
+      "nextLabel": "Next: Choose your sensors"
+    },
+    {
+      "id": 3,
+      "key": "sensors",
+      "title": "Choose your sensors",
+      "icon": "layers",
+      "nextLabel": "Next: Add extra protection"
+    },
+    {
+      "id": 4,
+      "key": "protection",
+      "title": "Add extra protection",
+      "icon": "grid",
+      "nextLabel": null
+    }
+  ],
+  "products": [
+    {
+      "id": "cam-v4",
+      "step": 1,
+      "category": "cameras",
+      "categoryLabel": "Cameras",
+      "name": "Wyze Cam v4",
+      "description": "The clearest Wyze Cam ever made.",
+      "learnMore": true,
+      "badge": "Save 22%",
+      "icon": "cam-dome",
+      "image": "/products/1.png",
+      "unit": "",
+      "variants": [
+        {
+          "id": "cam-v4:white",
+          "colorImg": "/products/1.png",
+          "label": "White",
+          "swatch": "#f2f1ec",
+          "compareAtPrice": 35.98,
+          "price": 27.98
+        },
+        {
+          "id": "cam-v4:grey",
+          "colorImg": "/products/1G.png",
+          "label": "Grey",
+          "swatch": "#9a9a96",
+          "compareAtPrice": 35.98,
+          "price": 27.98
+        },
+        {
+          "id": "cam-v4:black",
+          "colorImg": "/products/1B.png",
+          "label": "Black",
+          "swatch": "#1e1e1e",
+          "compareAtPrice": 35.98,
+          "price": 27.98
+        }
+      ],
+      "initialActiveVariant": "cam-v4:black",
+      "initialQuantities": {
+        "cam-v4:white": 0,
+        "cam-v4:grey": 0,
+        "cam-v4:black": 1
+      }
+    },
+    {
+      "id": "cam-pan-v3",
+      "step": 1,
+      "category": "cameras",
+      "categoryLabel": "Cameras",
+      "name": "Wyze Cam Pan v3",
+      "description": "360\u00b0 pan and 180\u00b0 tilt security camera.",
+      "learnMore": true,
+      "badge": "Save 17%",
+      "icon": "cam-pan",
+      "image": "/products/2.png",
+      "unit": "",
+      "variants": [
+        {
+          "id": "cam-pan-v3:white",
+          "colorImg": "/products/2W.png",
+          "label": "White",
+          "swatch": "#f2f1ec",
+          "compareAtPrice": 28.99,
+          "price": 23.99
+        },
+        {
+          "id": "cam-pan-v3:black",
+          "colorImg": "/products/2B.png",
+          "label": "Black",
+          "swatch": "#1e1e1e",
+          "compareAtPrice": 28.99,
+          "price": 23.99
+        }
+      ],
+      "initialActiveVariant": "cam-pan-v3:white",
+      "initialQuantities": { "cam-pan-v3:white": 2, "cam-pan-v3:black": 0 }
+    },
+    {
+      "id": "cam-floodlight-v2",
+      "step": 1,
+      "category": "cameras",
+      "categoryLabel": "Cameras",
+      "name": "Wyze Cam Floodlight v2",
+      "description": "2K floodlight camera with a 160\u00b0 wide-angle view for your garage.",
+      "learnMore": true,
+      "badge": "Save 22%",
+      "icon": "cam-flood",
+      "image": "/products/3.png",
+      "unit": "",
+      "variants": [
+        {
+          "id": "cam-floodlight-v2:white",
+          "colorImg": "/products/3.png",
+          "label": "White",
+          "swatch": "#f2f1ec",
+          "compareAtPrice": 89.98,
+          "price": 69.98
+        },
+        {
+          "id": "cam-floodlight-v2:black",
+          "colorImg": "/products/3B.png",
+          "label": "Black",
+          "swatch": "#1e1e1e",
+          "compareAtPrice": 89.98,
+          "price": 69.98
+        }
+      ],
+      "initialActiveVariant": "cam-floodlight-v2:white",
+      "initialQuantities": {
+        "cam-floodlight-v2:white": 0,
+        "cam-floodlight-v2:black": 0
+      }
+    },
+    {
+      "id": "duo-cam-doorbell",
+      "step": 1,
+      "category": "cameras",
+      "categoryLabel": "Cameras",
+      "name": "Wyze Duo Cam Doorbell",
+      "description": "Two cameras. Two views. Double the porch protection.",
+      "learnMore": false,
+      "badge": null,
+      "icon": "doorbell",
+      "image": "/products/4.png",
+      "unit": "",
+      "variants": null,
+      "noVariantPricing": { "compareAtPrice": null, "price": 69.98 },
+      "initialQuantities": { "default": 0 }
+    },
+    {
+      "id": "battery-cam-pro",
+      "step": 1,
+      "category": "cameras",
+      "categoryLabel": "Cameras",
+      "name": "Wyze Battery Cam Pro",
+      "description": "Protect anywhere. See everything in 2.5K HDR. No power outlet or electrician needed.",
+      "learnMore": true,
+      "badge": null,
+      "icon": "cam-battery",
+      "image": "/products/5.png",
+      "unit": "",
+      "variants": [
+        {
+          "id": "battery-cam-pro:white",
+          "colorImg": "/products/5.png",
+          "label": "White",
+          "swatch": "#f2f1ec",
+          "compareAtPrice": null,
+          "price": 89.98
+        },
+        {
+          "id": "battery-cam-pro:black",
+          "colorImg": "/products/5B.png",
+          "label": "Black",
+          "swatch": "#1e1e1e",
+          "compareAtPrice": null,
+          "price": 89.98
+        }
+      ],
+      "initialActiveVariant": "battery-cam-pro:white",
+      "initialQuantities": {
+        "battery-cam-pro:white": 0,
+        "battery-cam-pro:black": 0
+      }
+    },
+    {
+      "id": "plan-cam-unlimited",
+      "step": 2,
+      "category": "plan",
+      "categoryLabel": "Plan",
+      "name": "Cam Unlimited",
+      "description": "Unlimited cloud storage for every camera, person detection, and 24/7 monitoring.",
+      "learnMore": true,
+      "badge": null,
+      "icon": "shield",
+      "unit": "/mo",
+      "exclusiveGroup": "plan",
+      "variants": null,
+      "noVariantPricing": { "compareAtPrice": 12.99, "price": 9.99 },
+      "initialQuantities": { "default": 1 }
+    },
+    {
+      "id": "plan-cam-basic",
+      "step": 2,
+      "category": "plan",
+      "categoryLabel": "Plan",
+      "name": "Cam Basic",
+      "description": "14-day rolling storage for a single camera with basic motion alerts.",
+      "learnMore": true,
+      "badge": null,
+      "icon": "shield-outline",
+      "unit": "/mo",
+      "exclusiveGroup": "plan",
+      "variants": null,
+      "noVariantPricing": { "compareAtPrice": null, "price": 2.99 },
+      "initialQuantities": { "default": 0 }
+    },
+    {
+      "id": "sense-motion",
+      "step": 3,
+      "category": "sensors",
+      "categoryLabel": "Sensors",
+      "name": "Wyze Sense Motion Sensor",
+      "description": "Detects movement in every room and sends instant alerts.",
+      "learnMore": true,
+      "badge": null,
+      "icon": "sensor-motion",
+      "image": "/products/S1.png",
+      "unit": "",
+      "variants": null,
+      "noVariantPricing": { "compareAtPrice": null, "price": 29.99 },
+      "initialQuantities": { "default": 2 }
+    },
+    {
+      "id": "sense-hub",
+      "step": 3,
+      "category": "sensors",
+      "categoryLabel": "Sensors",
+      "name": "Wyze Sense Hub (Required)",
+      "description": "Connects your sensors to the app. One hub covers your whole home.",
+      "learnMore": true,
+      "badge": null,
+      "icon": "hub",
+      "image": "/products/S2.png",
+      "unit": "",
+      "minQuantity": 1,
+      "variants": null,
+      "noVariantPricing": { "compareAtPrice": 29.92, "price": 0 },
+      "priceLabelOverride": "FREE",
+      "initialQuantities": { "default": 1 }
+    },
+    {
+      "id": "sense-entry",
+      "step": 3,
+      "category": "sensors",
+      "categoryLabel": "Sensors",
+      "name": "Wyze Sense Entry Sensor",
+      "description": "Know the instant a door or window opens.",
+      "learnMore": true,
+      "badge": null,
+      "icon": "sensor-entry",
+      "unit": "",
+      "variants": null,
+      "noVariantPricing": { "compareAtPrice": null, "price": 19.99 },
+      "initialQuantities": { "default": 0 }
+    },
+    {
+      "id": "sense-water",
+      "step": 3,
+      "category": "sensors",
+      "categoryLabel": "Sensors",
+      "name": "Wyze Sense Water Sensor",
+      "description": "Get an alert the moment a leak starts.",
+      "learnMore": true,
+      "badge": null,
+      "icon": "sensor-water",
+      "unit": "",
+      "variants": null,
+      "noVariantPricing": { "compareAtPrice": null, "price": 14.99 },
+      "initialQuantities": { "default": 0 }
+    },
+    {
+      "id": "microsd-256",
+      "step": 4,
+      "category": "accessories",
+      "categoryLabel": "Accessories",
+      "name": "Wyze MicroSD Card (256GB)",
+      "description": "Local backup storage for continuous recording.",
+      "learnMore": true,
+      "badge": null,
+      "icon": "sdcard",
+      "image": "/products/A1.png",
+      "unit": "",
+      "variants": null,
+      "noVariantPricing": { "compareAtPrice": null, "price": 20.98 },
+      "initialQuantities": { "default": 2 }
+    },
+    {
+      "id": "protection-plan-2yr",
+      "step": 4,
+      "category": "protection",
+      "categoryLabel": "Protection",
+      "name": "2-Year Protection Plan",
+      "description": "Extended coverage for accidental damage and hardware failure.",
+      "learnMore": true,
+      "badge": "Save 29%",
+      "icon": "protection",
+      "unit": "",
+      "variants": null,
+      "noVariantPricing": { "compareAtPrice": 34.99, "price": 24.99 },
+      "initialQuantities": { "default": 0 }
+    }
+  ],
+  "extras": [
+    {
+      "id": "fast-shipping",
+      "name": "Fast Shipping",
+      "compareAtPrice": 5.99,
+      "priceLabelOverride": "FREE",
+      "icon": "truck"
+    }
+  ],
+  "guarantee": {
+    "title": "30-day hassle-free returns",
+    "image": "/products/Bagde.png",
+    "body": "If you're not totally in love with the product, we will refund you 100%.",
+    "badgeLabel": "100% Wyze satisfaction guarantee"
+  },
+  "financingLabel": "$19.19/mo"
+}

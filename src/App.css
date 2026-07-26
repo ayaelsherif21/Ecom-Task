@@ -1,184 +1,1002 @@
-.counter {
-  font-size: 16px;
-  padding: 5px 10px;
-  border-radius: 5px;
-  color: var(--accent);
-  background: var(--accent-bg);
-  border: 2px solid transparent;
-  transition: border-color 0.3s;
-  margin-bottom: 24px;
+/* ---------- layout shell ----------
+   Desktop reference = Figma "Frame 1735": two columns side by side,
+   accordion column 768px / review column 399px / 29px gap, inside a
+   1196px content area (768+29+399).
+   Below that width the layout switches to "Frame 1736": a single
+   stacked column with the review panel below the builder, and the
+   builder itself can grow up to 1213px wide. Below ~560px we relax to
+   a simple fluid mobile layout (not specced in Figma, per the brief). */
 
-  &:hover {
-    border-color: var(--accent-border);
-  }
-  &:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-  }
+.app {
+  min-height: 100%;
+  padding: 32px 24px 64px;
+  display: flex;
+  justify-content: center;
+  background: #ffffff;
 }
 
-.hero {
-  position: relative;
-
-  .base,
-  .framework,
-  .vite {
-    inset-inline: 0;
-    margin: 0 auto;
-  }
-
-  .base {
-    width: 170px;
-    position: relative;
-    z-index: 0;
-  }
-
-  .framework,
-  .vite {
-    position: absolute;
-  }
-
-  .framework {
-    z-index: 1;
-    top: 34px;
-    height: 28px;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg)
-      scale(1.4);
-  }
-
-  .vite {
-    z-index: 0;
-    top: 107px;
-    height: 26px;
-    width: auto;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg)
-      scale(0.8);
-  }
-}
-
-#center {
+.app__inner {
+  width: 100%;
+  max-width: 1213px;
   display: flex;
   flex-direction: column;
-  gap: 25px;
-  place-content: center;
-  place-items: center;
-  flex-grow: 1;
+  gap: 24px;
+}
 
-  @media (max-width: 1024px) {
-    padding: 32px 20px 24px;
-    gap: 18px;
+.app__builder,
+.app__review {
+  min-width: 0;
+}
+
+.app__review {
+  order: 2;
+}
+
+.app__builder {
+  order: 1;
+}
+
+@media (min-width: 1180px) {
+  .app__inner {
+    max-width: 1196px;
+    display: grid;
+    grid-template-columns: 768fr 399fr;
+    gap: 29px;
+    align-items: start;
+  }
+
+  .app__review,
+  .app__builder {
+    order: initial;
   }
 }
 
-#next-steps {
+/* ---------- accordion shell ----------
+   The four steps sit in a plain column (13px gap, per Figma) with no
+   individual card/shadow. Each step just has a hairline divider below
+   it. Only the currently OPEN step gets a bordered, rounded box. */
+
+.accordion {
   display: flex;
-  border-top: 1px solid var(--border);
-  text-align: left;
-
-  & > div {
-    flex: 1 1 0;
-    padding: 32px;
-    @media (max-width: 1024px) {
-      padding: 24px 20px;
-    }
-  }
-
-  .icon {
-    margin-bottom: 16px;
-    width: 22px;
-    height: 22px;
-  }
-
-  @media (max-width: 1024px) {
-    flex-direction: column;
-    text-align: center;
-  }
+  flex-direction: column;
+  gap: 13px;
 }
 
-#docs {
-  border-right: 1px solid var(--border);
-
-  @media (max-width: 1024px) {
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-  }
+.step {
+  border-bottom: 1px solid #e7e8f0;
+  padding-bottom: 13px;
 }
 
-#next-steps ul {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  gap: 8px;
-  margin: 32px 0 0;
-
-  .logo {
-    height: 18px;
-  }
-
-  a {
-    color: var(--text-h);
-    font-size: 16px;
-    border-radius: 6px;
-    background: var(--social-bg);
-    display: flex;
-    padding: 6px 12px;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
-    transition: box-shadow 0.3s;
-
-    &:hover {
-      box-shadow: var(--shadow);
-    }
-    .button-icon {
-      height: 18px;
-      width: 18px;
-    }
-  }
-
-  @media (max-width: 1024px) {
-    margin-top: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-
-    li {
-      flex: 1 1 calc(50% - 8px);
-    }
-
-    a {
-      width: 100%;
-      justify-content: center;
-      box-sizing: border-box;
-    }
-  }
+.step--open {
+  border: 1.5px solid #cfd2e6;
+  background: #edf4ff;
+  border-radius: 14px;
+  padding: 4px 0 20px;
 }
 
-#spacer {
-  height: 88px;
-  border-top: 1px solid var(--border);
-  @media (max-width: 1024px) {
-    height: 48px;
-  }
-}
-
-.ticks {
-  position: relative;
+.step__header {
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  padding: 16px 20px;
+}
 
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    top: -4.5px;
-    border: 5px solid transparent;
+.step--open .step__header {
+  padding: 16px 24px 4px;
+}
+
+.step__heading {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.step__eyebrow {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #9497a8;
+}
+
+.step__title-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.step__icon {
+  width: 20px;
+  height: 20px;
+  flex: none;
+  color: #372e6b;
+}
+
+.step__title {
+  font-size: 22px;
+  font-weight: 400;
+  color: #17172b;
+}
+
+.step__state {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: none;
+  color: #5b3df6;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.step__chevron {
+  display: inline-block;
+  transition: transform 0.15s ease;
+  color: #5b3df6;
+}
+
+.step__chevron--up {
+  transform: rotate(180deg);
+}
+
+.step__body {
+  padding: 0 24px;
+}
+
+/* ---------- product grid (the light-blue box inside a step) ----------
+   768x695 / 1213x502 in Figma depending on breakpoint, both sharing the
+   same internal spec: background #EDF4FF, radius 10, padding 15,
+   gap 5 between wrapped cards. justify-content: center means a lone
+   leftover card (e.g. the 5th camera) sits centered in its own row,
+   instead of hugging the left edge. */
+
+.product-grid {
+  border-radius: 10px;
+  padding: 15px;
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 18px;
+}
+
+.product-grid > *:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+  justify-self: center;
+}
+.product-card__media img,
+.review-line__thumb img {
+  width: 98px;
+  height: 110px;
+  object-fit: cover;
+  border-radius: inherit;
+}
+.btn--next {
+  display: block;
+  margin: 0 auto;
+  padding: 5px 24px;
+  border-radius: 7px;
+  border: 1px solid #5b3df6;
+  background: #ffffff;
+  color: #5b3df6;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.btn--next:hover {
+  background: #f4f1ff;
+}
+
+/* ---------- product card ----------
+   Mobile-first base below (fluid, vertical). Each breakpoint below
+   ONLY overrides sizing inside its own @media block - nothing is
+   redeclared unconditionally afterwards, so the cascade stays correct
+   at every width. */
+
+.product-card {
+  position: relative;
+  background: #ffffff;
+  border: 1.5px solid #e3e5f0;
+  border-radius: 10px;
+  padding: 11px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow: hidden;
+}
+
+.product-card--selected {
+  border-color: #6c4fff;
+  border-width: 2px;
+  box-shadow: 0 0 0 1px #6c4fff inset;
+}
+
+.product-card__badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #4e2fd2;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  padding: 3px 9px;
+  border-radius: 999px;
+  z-index: 1;
+}
+
+.product-card__media {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 202.6 / 152.1;
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #372e6b;
+}
+
+.product-card__media svg {
+  width: 44px;
+  height: 44px;
+}
+
+.product-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  min-height: 0;
+}
+
+.product-card__title {
+  margin: 0;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #17172b;
+}
+
+.product-card__desc {
+  margin: 0 0 2px;
+  font-size: 11.5px;
+  line-height: 1.4;
+  color: #6d6f80;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.product-card__link {
+  color: #5b3df6;
+  font-weight: 600;
+  text-decoration: underline;
+  white-space: nowrap;
+}
+
+/* .variant-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 4px 0;
+} */
+.variant-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  width: 205px;
+  height: 26px;
+}
+
+.variant-chip {
+  width: 65px;
+  height: 26px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+
+  padding: 1px 3px;
+
+  border: 0.5px solid #d9d9d9;
+  border-radius: 2px;
+  background: #fff;
+
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.variant-chip--active {
+  background: #1df0bb0a;
+  border: 0.5px solid #0aa288;
+}
+
+.variant-chip__image {
+  width: 24px;
+  height: 24px;
+  border-radius: 5px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.variant-chip__swatch {
+  display: none;
+}
+
+.variant-chip__label {
+  font-family: "Gilroy-Medium", sans-serif;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 100%;
+  letter-spacing: 0.6px;
+  color: #444;
+  white-space: nowrap;
+  padding-right: 4px;
+}
+
+/* .variant-chip {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: #f6f6fa;
+  border: 1px solid #e3e5f0;
+  border-radius: 999px;
+  padding: 3px 9px 3px 4px;
+  cursor: pointer;
+  font-size: 10.5px;
+  color: #4a4b5c;
+}
+
+.variant-chip--active {
+  border-color: #6c4fff;
+  color: #33285f;
+}
+
+.variant-chip__swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  flex: none;
+} */
+
+.product-card__footer {
+  margin-top: auto;
+  padding-top: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.product-card__price {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  line-height: 1.25;
+}
+
+@media (min-width: 560px) {
+  .product-card {
+    width: 224.6px;
+    height: 331.1px;
+    flex: 0 0 224.6px;
+    gap: 13px;
   }
 
-  &::before {
-    left: 0;
-    border-left-color: var(--border);
+  .product-card__media {
+    width: 100%;
+    height: 152.1px;
+    aspect-ratio: auto;
   }
-  &::after {
-    right: 0;
-    border-right-color: var(--border);
+
+  .product-card__media svg {
+    width: 56px;
+    height: 56px;
   }
+}
+
+@media (min-width: 1180px) {
+  .product-card {
+    width: 361.5px;
+    height: 159px;
+    flex: 0 0 361.5px;
+    flex-direction: row;
+    align-items: stretch;
+    gap: 19px;
+  }
+
+  .product-card__media {
+    width: 101px;
+    height: 100%;
+    flex: 0 0 101px;
+  }
+
+  .product-card__body {
+    width: 205px;
+    flex: none;
+  }
+}
+
+/* ---------- stepper ---------- */
+
+.stepper {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #dcdee8;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.stepper__btn {
+  border: none;
+  background: #ffffff;
+  width: 26px;
+  height: 26px;
+  font-size: 14px;
+  line-height: 1;
+  cursor: pointer;
+  color: #33285f;
+}
+
+.stepper--sm .stepper__btn {
+  width: 22px;
+  height: 22px;
+  font-size: 12px;
+}
+
+.stepper__btn:disabled {
+  color: #c7c8d4;
+  cursor: not-allowed;
+}
+
+.stepper__btn:hover:not(:disabled) {
+  background: #f4f1ff;
+}
+
+.stepper__value {
+  min-width: 22px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: #17172b;
+}
+
+.stepper--sm .stepper__value {
+  min-width: 18px;
+  font-size: 12px;
+}
+
+/* ---------- prices ---------- */
+
+.price {
+  display: block;
+}
+
+.price--compare {
+  color: #d8392b;
+  text-decoration: line-through;
+  font-size: 14px;
+}
+
+.price--active {
+  color: #33285f;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.price--small {
+  color: #6f7882;
+  font-size: 14px;
+}
+
+.price--total {
+  font-size: 22px;
+}
+
+.price--total.price--compare {
+  font-size: 13px;
+}
+/* ---------- review panel ----------
+   Outer box: 399x855, radius 10, padding-top 15, gap 5 (Figma).
+   Each category group: 350 wide, padding-top 15, gap 8, 1px top border.
+   Final checkout block: 350 wide, gap 8. */
+
+.review-panel {
+  background: #eef1fb;
+  border-radius: 10px;
+  padding: 15px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.review-panel__title {
+  margin: 8px 0 4px;
+  font-size: 22px;
+  font-weight: 400;
+  color: #1f1f1f;
+}
+
+.review-panel__subtitle {
+  margin: 0 0 14px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #6d6f80;
+}
+
+.review-group {
+  padding-top: 15px;
+  border-top: 1px solid #dfe2f0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.review-group:first-of-type {
+  border-top: none;
+  padding-top: 0;
+}
+
+.review-group__label {
+  margin: 0;
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #9497a8;
+}
+
+/* .review-line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+} */
+
+.review-line {
+  display: grid;
+
+  grid-template-columns: 48px 1fr auto auto;
+
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 6px 0;
+}
+
+.review-line__thumb {
+  width: 34px;
+  height: 34px;
+  flex: none;
+  background: #ffffff;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  color: #372e6b;
+}
+
+.review-line__info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.review-line__name {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #17172b;
+  overflow-wrap: anywhere;
+}
+
+.review-line__price {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.review-panel__checkout-block {
+  padding-top: 15px;
+  border-top: 1px solid #dfe2f0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.review-panel__guarantee {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.guarantee-badge {
+  flex: none;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: #5b3df6;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: 3px dashed rgba(255, 255, 255, 0.55);
+}
+
+.review-panel__guarantee-title {
+  margin: 0;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #17172b;
+}
+
+.review-panel__guarantee-body {
+  margin: 2px 0 0;
+  font-size: 11px;
+  color: #6d6f80;
+  line-height: 1.4;
+}
+
+.review-panel__financing {
+  align-self: flex-end;
+  width: fit-content;
+  background: #241c47;
+  color: #fff;
+  font-size: 10.5px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+.review-panel__totals {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.review-panel__savings {
+  margin: 0;
+  text-align: right;
+  font-size: 12px;
+  font-weight: 600;
+  color: #1c9d5b;
+}
+
+.btn--checkout {
+  width: 100%;
+  padding: 13px 16px;
+  border: none;
+  border-radius: 12px;
+  background: #5b3df6;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btn--checkout:hover {
+  background: #4c31dd;
+}
+
+.link--save {
+  display: block;
+  width: 100%;
+  background: none;
+  border: none;
+  text-align: center;
+  font-size: 12.5px;
+  color: #4a4b5c;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* ---------- responsive tweaks below the two named breakpoints ---------- */
+
+@media (max-width: 640px) {
+  .app {
+    padding: 16px 12px 48px;
+  }
+
+  .step__header {
+    padding: 14px 12px;
+  }
+
+  .step--open .step__header {
+    padding: 14px 12px 4px;
+  }
+
+  .step__body {
+    padding: 0 12px;
+  }
+
+  .step__eyebrow {
+    font-size: 9.5px;
+  }
+
+  .step__title {
+    font-size: 14px;
+  }
+
+  .step__count {
+    display: none;
+  }
+
+  .product-grid {
+    padding: 12px;
+  }
+
+  .review-panel {
+    padding: 15px 16px 20px;
+  }
+}
+
+@media (min-width: 560px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 224.6px);
+  }
+}
+
+@media (min-width: 1180px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 361.5px);
+  }
+}
+
+.review-line__thumb {
+  width: 42px;
+  height: 42px;
+
+  background: #fff;
+
+  border-radius: 6px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  overflow: hidden;
+}
+
+.review-line__thumb img {
+  width: 34px;
+  height: 34px;
+
+  object-fit: contain;
+}
+.review-line__name {
+  font-size: 13px;
+
+  font-weight: 600;
+
+  color: #232323;
+
+  line-height: 1.2;
+}
+.review-line__price {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-end;
+
+  min-width: 72px;
+}
+
+.review-line__price .price--compare {
+  font-size: 12px;
+
+  color: #8f9095;
+
+  text-decoration: line-through;
+}
+
+.review-line__price .price--active {
+  font-size: 14px;
+
+  font-weight: 700;
+
+  color: #5142f5;
+}
+
+.review-stepper {
+  display: flex;
+  margin-left: 4px;
+  align-items: center;
+
+  gap: 8px;
+}
+
+.review-stepper__btn {
+  width: 22px;
+  height: 22px;
+
+  border: none;
+
+  border-radius: 5px;
+
+  background: #fff;
+
+  color: #7e7e7e;
+
+  font-size: 15px;
+
+  cursor: pointer;
+
+  box-shadow: 0 0 0 1px #e4e5ea inset;
+}
+
+.review-stepper__btn:hover {
+  background: #f7f7f9;
+}
+
+.review-stepper__value {
+  width: 14px;
+
+  text-align: center;
+
+  font-weight: 600;
+
+  font-size: 14px;
+}
+.review-header {
+  font-family: Gilroy-Medium;
+  font-weight: 400;
+  font-style: ☞;
+  font-size: 12px;
+  leading-trim: NONE;
+  line-height: 100%;
+  letter-spacing: 1.6px;
+  vertical-align: middle;
+  text-transform: uppercase;
+  color: #484848;
+}
+.review-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+  margin: 18px 0;
+}
+
+/* .review-summary__badge {
+  flex-shrink: 0;
+} */
+
+.review-summary__prices {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.review-panel__financing {
+  background: #4e2fd2;
+
+  color: #fff;
+
+  padding: 4px 12px;
+
+  border-radius: 5px;
+
+  font-size: 11px;
+
+  margin-bottom: 8px;
+}
+
+.review-panel__totals {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-end;
+}
+
+.review-panel__totals .price--compare {
+  font-size: 16px;
+
+  color: #8f9095;
+
+  text-decoration: line-through;
+
+  line-height: 1;
+}
+
+.review-panel__totals .price--active {
+  color: #4e2fd2;
+
+  font-size: 24px;
+
+  font-weight: 400;
+
+  line-height: 32px;
+}
+
+.guarantee-badge {
+  width: 92px;
+  height: 92px;
+  object-fit: contain;
+
+  transform: rotate(-18deg);
+
+  flex-shrink: 0;
+}
+.guarantee-badge span {
+  font-size: 24px;
+
+  font-weight: 700;
+
+  line-height: 1;
+}
+.guarantee-badge small {
+  margin-top: 4px;
+
+  text-align: center;
+
+  font-size: 8px;
+
+  line-height: 1.2;
+
+  letter-spacing: 0.2px;
+}
+
+.review-panel__savings {
+  text-align: center;
+
+  color: #0aa288;
+
+  font-size: 12px;
+
+  font-weight: 400;
+
+  margin: 4px 2px;
+}
+
+.btn--checkout {
+  width: 350px;
+  height: 48px;
+  border: none;
+  border-radius: 4px;
+  background: #4e2fd2;
+
+  color: #fff;
+  font-size: 18px;
+
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.btn--checkout:hover {
+  background: #4224cf;
+}
+
+.link--save {
+  margin-top: 12px;
+
+  display: block;
+
+  text-align: center;
+
+  color: #6f7882;
+
+  font-size: 14px;
+
+  font-style: italic;
+
+  text-decoration: underline;
 }
