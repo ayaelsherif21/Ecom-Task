@@ -36,7 +36,7 @@
   order: 1;
 }
 
-@media (min-width: 1180px) {
+@media (min-width: 1180px) and (max-width: 1919.98px) {
   .app__inner {
     max-width: 1196px;
     display: grid;
@@ -48,6 +48,16 @@
   .app__review,
   .app__builder {
     order: initial;
+  }
+}
+
+/* Ultra-wide (>=1920px): back to a single stacked column, wide - the
+   builder grows to fit 5 cards per row and the review panel below
+   splits into two internal columns (see the >=1920px rules further
+   down for the product-grid / review-panel overrides). */
+@media (min-width: 1920px) {
+  .app__inner {
+    max-width: 1392px;
   }
 }
 
@@ -63,7 +73,7 @@
 }
 
 .step {
-  border-bottom: 1px solid #e7e8f0;
+  border-bottom: 1px solid #dfe1ec;
   padding-bottom: 13px;
 }
 
@@ -131,11 +141,14 @@
   flex: none;
   color: #5b3df6;
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .step__chevron {
   display: inline-block;
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1;
   transition: transform 0.15s ease;
   color: #5b3df6;
 }
@@ -169,24 +182,22 @@
   grid-column: 1 / -1;
   justify-self: center;
 }
-.product-card__media img,
-.review-line__thumb img {
-  width: 98px;
-  height: 110px;
+.product-card__media img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   border-radius: inherit;
 }
 .btn--next {
   display: block;
   margin: 0 auto;
-  padding: 5px 24px;
+  padding: 10px 24px;
   border-radius: 7px;
   border: 1px solid #5b3df6;
   background: #ffffff;
   color: #5b3df6;
   font-weight: 700;
-  font-size: 14px;
-  cursor: pointer;
+  font-size: 16px;
 }
 
 .btn--next:hover {
@@ -386,7 +397,7 @@
   line-height: 1.25;
 }
 
-@media (min-width: 560px) {
+@media (min-width: 560px) and (max-width: 767.98px) {
   .product-card {
     width: 224.6px;
     height: 331.1px;
@@ -406,7 +417,119 @@
   }
 }
 
-@media (min-width: 1180px) {
+/* ---------- Tablet (768px-1179px) ----------
+   Five compact cards per row instead of two, matching the reference
+   screenshot. Everything below just shrinks the same vertical card
+   layout to fit five across; nothing structural changes. */
+@media (min-width: 768px) and (max-width: 1179.98px) {
+  .product-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 8px;
+    padding: 10px;
+  }
+
+  /* a partial last row should wrap normally at this width, not
+     span/center itself the way it does at 1-2 cards per row */
+  .product-grid > *:last-child:nth-child(odd) {
+    grid-column: auto;
+    justify-self: stretch;
+  }
+
+  .product-card {
+    width: 100%;
+    height: auto;
+    flex: none;
+    padding: 8px;
+    gap: 6px;
+  }
+
+  .product-card__badge {
+    top: 6px;
+    left: 6px;
+    font-size: 7.5px;
+    padding: 2px 6px;
+  }
+
+  .product-card__media {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 202.6 / 152.1;
+  }
+
+  .product-card__media svg {
+    width: 26px;
+    height: 26px;
+  }
+
+  .product-card__body {
+    width: auto;
+    gap: 3px;
+  }
+
+  .product-card__title {
+    font-size: 10.5px;
+  }
+
+  .product-card__desc {
+    font-size: 8.5px;
+    line-height: 1.3;
+    -webkit-line-clamp: 2;
+  }
+
+  .product-card__link {
+    font-size: 8.5px;
+  }
+
+  .variant-row {
+    width: 100%;
+    height: auto;
+    flex-wrap: wrap;
+    gap: 3px;
+  }
+
+  .variant-chip {
+    width: auto;
+    height: 20px;
+    flex: 1 1 auto;
+    min-width: 0;
+    padding: 1px 2px;
+  }
+
+  .variant-chip__image {
+    width: 14px;
+    height: 14px;
+  }
+
+  .variant-chip__label {
+    font-size: 7.5px;
+    padding-right: 2px;
+  }
+
+  .product-card__footer {
+    padding-top: 4px;
+  }
+
+  .product-card .price--compare {
+    font-size: 8.5px;
+  }
+
+  .product-card .price--active {
+    font-size: 10px;
+  }
+
+  .stepper__btn {
+    width: 18px;
+    height: 18px;
+    font-size: 11px;
+  }
+
+  .stepper__value {
+    min-width: 14px;
+    font-size: 10px;
+  }
+}
+
+@media (min-width: 1180px) and (max-width: 1919.98px) {
   .product-card {
     width: 361.5px;
     height: 159px;
@@ -425,6 +548,52 @@
   .product-card__body {
     width: 205px;
     flex: none;
+  }
+}
+
+/* Ultra-wide (>=1920px): five roomier vertical cards per row. */
+@media (min-width: 1920px) {
+  .product-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .product-grid > *:last-child:nth-child(odd) {
+    grid-column: auto;
+    justify-self: stretch;
+  }
+
+  .product-card {
+    width: 100%;
+    height: auto;
+    flex: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .product-card__media {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 202.6 / 152.1;
+    flex: none;
+  }
+
+  .product-card__media svg {
+    width: 42px;
+    height: 42px;
+  }
+
+  .product-card__body {
+    width: auto;
+  }
+
+  .product-card__title {
+    font-size: 12.5px;
+  }
+
+  .product-card__desc {
+    font-size: 10.5px;
   }
 }
 
@@ -747,15 +916,81 @@
   }
 }
 
-@media (min-width: 560px) {
+@media (min-width: 560px) and (max-width: 767.98px) {
   .product-grid {
     grid-template-columns: repeat(2, 224.6px);
   }
 }
 
-@media (min-width: 1180px) {
+@media (min-width: 1180px) and (max-width: 1919.98px) {
   .product-grid {
     grid-template-columns: repeat(2, 361.5px);
+  }
+}
+
+/* ---------- Tablet (768px-1179px) review panel ----------
+   Splits into two columns: itemized product/shipping details on the
+   left, guarantee badge + total + checkout button on the right - both
+   columns start level with the "Cameras" group, so the left column
+   keeps growing taller than the right as more groups are added below. */
+@media (min-width: 768px) and (max-width: 1179.98px) {
+  .review-panel {
+    display: grid;
+    grid-template-columns: 1fr minmax(200px, 260px);
+    column-gap: 24px;
+    row-gap: 0;
+    align-items: start;
+  }
+
+  .review-panel__title,
+  .review-panel__subtitle {
+    grid-column: 1 / -1;
+  }
+
+  .review-group {
+    grid-column: 1;
+  }
+
+  .review-panel__checkout-block {
+    grid-column: 2;
+    grid-row: 3;
+    align-self: start;
+    border-top: none;
+    padding-top: 0;
+    padding-left: 24px;
+    border-left: 1px solid #dfe2f0;
+  }
+}
+
+/* Ultra-wide (>=1920px) review panel: same two-column split as tablet,
+   just a bit roomier. */
+@media (min-width: 1920px) {
+  .review-panel {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    column-gap: 40px;
+    row-gap: 0;
+    align-items: start;
+    padding: 24px 32px 32px;
+  }
+
+  .review-panel__title,
+  .review-panel__subtitle {
+    grid-column: 1 / -1;
+  }
+
+  .review-group {
+    grid-column: 1;
+  }
+
+  .review-panel__checkout-block {
+    grid-column: 2;
+    grid-row: 3;
+    align-self: start;
+    border-top: none;
+    padding-top: 0;
+    padding-left: 32px;
+    border-left: 1px solid #dfe2f0;
   }
 }
 
