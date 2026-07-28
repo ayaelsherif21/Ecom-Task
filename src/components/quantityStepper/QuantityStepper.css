@@ -1,0 +1,89 @@
+
+.review-stepper {
+  display: flex;
+  margin-left: 4px;
+  align-items: center;
+
+  gap: 8px;
+}
+
+.review-stepper__btn {
+  width: 22px;
+  height: 22px;
+
+  border: none;
+
+  border-radius: 5px;
+
+  background: #fff;
+
+  color: #7e7e7e;
+
+  font-size: 15px;
+
+  cursor: pointer;
+
+  box-shadow: 0 0 0 1px #e4e5ea inset;
+}
+
+.review-stepper__btn:hover {
+  background: #f7f7f9;
+}
+
+.review-stepper__value {
+  width: 14px;
+
+  text-align: center;
+
+  font-weight: 600;
+
+  font-size: 14px;
+}
+
+/* ---------- stepper ---------- */
+.stepper {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #dcdee8;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.stepper__btn {
+  border: none;
+  background: #ffffff;
+  width: 26px;
+  height: 26px;
+  font-size: 14px;
+  line-height: 1;
+  cursor: pointer;
+  color: #33285f;
+}
+
+.stepper--sm .stepper__btn {
+  width: 22px;
+  height: 22px;
+  font-size: 12px;
+}
+
+.stepper__btn:disabled {
+  color: #c7c8d4;
+  cursor: not-allowed;
+}
+
+.stepper__btn:hover:not(:disabled) {
+  background: #f4f1ff;
+}
+
+.stepper__value {
+  min-width: 22px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: #17172b;
+}
+
+.stepper--sm .stepper__value {
+  min-width: 18px;
+  font-size: 12px;
+}

@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useMemo, useReducer, useState } from "react";
+import { useEffect, useMemo, useReducer, useState } from "react";
 import rawData from "../data/products.json";
 import {
   normalizeProducts,
@@ -6,6 +6,7 @@ import {
   buildInitialActiveVariants,
 } from "../utils/pricing";
 import { loadSavedSystem, saveSystem, clearSavedSystem } from "../utils/storage";
+import { StoreContext } from './StoreContext';
 
 const PRODUCTS = normalizeProducts(rawData.products);
 const STEPS = rawData.steps;
@@ -72,8 +73,6 @@ function reducer(state, action) {
       return state;
   }
 }
-
-const StoreContext = createContext(null);
 
 export function StoreProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, undefined, initialState);
@@ -145,8 +144,8 @@ export function StoreProvider({ children }) {
   return <StoreContext.Provider value={value}>{children}</StoreContext.Provider>;
 }
 
-export function useStore() {
-  const ctx = useContext(StoreContext);
-  if (!ctx) throw new Error("useStore must be used within a StoreProvider");
-  return ctx;
-}
+// function useStore() {
+//   const ctx = useContext(StoreContext);
+//   if (!ctx) throw new Error("useStore must be used within a StoreProvider");
+//   return ctx;
+// }

@@ -1,7 +1,7 @@
-import { StoreProvider } from "./context/StoreContext";
-import Accordion from "./components/Accordion";
-import ReviewPanel from "./components/ReviewPanel";
+import ReviewPanel from "./components/ReviewPanel/ReviewPanel";
 import "./App.css";
+import Accordion from "./components/step/Accordion";
+import { StoreProvider } from "./context/StoreProvider";
 
 function BuilderShell() {
   return (

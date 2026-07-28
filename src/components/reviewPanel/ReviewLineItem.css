@@ -1,0 +1,61 @@
+
+/*--------------*/
+.review-line__thumb {
+  width: 42px;
+  height: 42px;
+
+  background: #fff;
+
+  border-radius: 6px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  overflow: hidden;
+}
+
+.review-line__thumb img {
+  width: 34px;
+  height: 34px;
+
+  object-fit: contain;
+}
+.review-line__name {
+  font-size: 13px;
+
+  font-weight: 600;
+
+  color: #232323;
+
+  line-height: 1.2;
+}
+.review-line__price {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-end;
+
+  min-width: 72px;
+}
+
+.review-line__price .price--compare {
+  font-size: 12px;
+
+  color: #8f9095;
+
+  text-decoration: line-through;
+}
+
+.review-line__price .price--active {
+  font-size: 14px;
+
+  font-weight: 700;
+
+  color: #5142f5;
+}
+
+
+
+

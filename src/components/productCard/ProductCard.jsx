@@ -1,9 +1,9 @@
-import { useStore } from "../context/StoreContext";
 import ProductIcon from "./ProductIcon";
-import VariantSelector from "./VariantSelector";
-import QuantityStepper from "./QuantityStepper";
-import { formatMoney } from "../utils/pricing";
-
+import VariantSelector from "../variantSelector/VariantSelector";
+import QuantityStepper from "../QuantityStepper/QuantityStepper";
+import { formatMoney } from "../../utils/pricing";
+import "./ProductCard.css";
+import { useStore } from "../../context/useStore";
 export default function ProductCard({ product }) {
   const { quantities, activeVariants, setQuantity, setActiveVariant } =
     useStore();
@@ -38,27 +38,28 @@ export default function ProductCard({ product }) {
           <ProductIcon name={product.icon} />
         )}
       </div>
-      
-      <div className="product-card__body">
-        <h3 className="product-card__title">{product.name}</h3>
-        {product.description && (
-          <p className="product-card__desc">
-            {product.description}
-            {product.learnMore && (
-              <>
-                {" "}
-                <a
-                  className="product-card__link"
-                  href="#learn-more"
-                  onClick={(e) => e.preventDefault()}
-                >
-                  Learn More
-                </a>
-              </>
-            )}
-          </p>
-        )}
 
+      <div className="product-card__body">
+        <div className="product-card_text">
+          <h3 className="product-card__title">{product.name}</h3>
+          {product.description && (
+            <p className="product-card__desc">
+              {product.description}
+              {product.learnMore && (
+                <>
+                  {" "}
+                  <a
+                    className="product-card__link"
+                    href="#learn-more"
+                    onClick={(e) => e.preventDefault()}
+                  >
+                    Learn More
+                  </a>
+                </>
+              )}
+            </p>
+          )}
+        </div>
         {product.isMultiVariant && (
           <VariantSelector
             variants={product.variants}

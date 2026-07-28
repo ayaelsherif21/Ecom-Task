@@ -1,6 +1,6 @@
 import Step from "./Step";
-import { useStore } from "../context/StoreContext";
-
+import { useStore } from "../../context/useStore";
+import "./Step.css"
 export default function Accordion() {
   const { steps, activeStep, setStep } = useStore();
 

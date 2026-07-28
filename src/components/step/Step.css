@@ -1,0 +1,232 @@
+.accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.step {
+  position: relative;
+  padding: 20px 15px;
+  border-bottom: 1px solid #8f8f8f;
+
+  /* border-bottom: 1px solid #dfe1ec;
+  padding-bottom: 13px; */
+  /* width: 768;
+  height: 67;
+  gap: 3px;
+  opacity: 1;
+  padding-top: 20px;
+  padding-right: 15px;
+  padding-bottom: 20px;
+  padding-left: 15px;
+  border-top-width: 0.5px;
+  border-bottom-width: 0.5px; */
+}
+
+.step--open {
+  border: 1.5px solid #cfd2e6;
+  background: #edf4ff;
+  border-radius: 14px;
+  padding: 4px 0 20px;
+  /* width: 768;
+  height: 695;
+  gap: 5px;
+  angle: 0 deg;
+  opacity: 1;
+  border-radius: 10px;
+  padding-top: 15px;
+  background: #edf4ff; */
+}
+
+.step__header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  padding: 0 20px;
+}
+
+.step--open .step__header {
+  padding: 16px 24px 4px;
+}
+
+.step__heading {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+  /* width: 768;
+  height: 12;
+  angle: 0 deg;
+  opacity: 1;
+  padding-right: 15px;
+  padding-left: 15px; */
+}
+
+.step__eyebrow {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #9497a8;
+  /* width: 768;
+  height: 12;
+  angle: 0 deg;
+  opacity: 1;
+  padding-right: 15px;
+  padding-left: 15px; */
+}
+
+.step__title-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-top: 0.5px solid #1f1f1f;
+}
+
+.step__icon {
+  width: 20px;
+  height: 20px;
+  flex: none;
+  color: #372e6b;
+}
+
+.step__title {
+  font-size: 22px;
+  font-weight: 400;
+  color: #0b0d10;
+}
+
+.step__state {
+  /* /* display: flex; */
+  align-items: center;
+  gap: 8px;
+  flex: none;
+  color: #5b3df6;
+  font-size: 13px;
+  font-weight: 700;
+  /* width: 83;
+height: 16;
+gap: 4px;
+angle: 0 deg;
+opacity: 1;
+font-family: Gilroy-Medium;
+font-weight: 400;
+font-size: 14px;
+leading-trim: NONE;
+line-height: 16px;
+letter-spacing: 0px;
+text-align: center;
+color: #4E2FD2; */
+}
+
+.step__chevron {
+  display: inline-block;
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1;
+  transition: transform 0.15s ease;
+  color: #5b3df6;
+  /* width: 12;
+height: 12;
+angle: 0 deg;
+opacity: 1; */
+}
+
+.step__chevron--up {
+  transform: rotate(180deg);
+}
+
+.step__body {
+  padding: 0 24px;
+}
+/* .line-top{
+    border-top: 0.5px solid #1F1F1F;
+
+} */
+.btn--next {
+  display: block;
+  margin: 0 auto;
+  padding: 10px 24px;
+  border-radius: 7px;
+  border: 1px solid #5b3df6;
+  background: #ffffff;
+  color: #5b3df6;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.btn--next:hover {
+  background: #f4f1ff;
+}
+
+/*------*/
+.product-grid {
+  border-radius: 10px;
+  padding: 15px;
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-content: center;
+  gap: 19px;
+  margin-bottom: 8px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.product-grid > *:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+  justify-self: center;
+}
+.product-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+}
+
+/* ---------- Product Grid Layout ---------- */
+@media (max-width: 390px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding-top: 31px;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+}
+
+@media (min-width: 391px) and (max-width: 767.98px) {
+  .product-grid {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 15px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1439.98px) {
+  .product-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .product-grid > *:last-child:nth-child(odd) {
+    grid-column: auto;
+    justify-self: stretch;
+  }
+}
+
+@media (min-width: 1440px) and (max-width: 1919.98px) {
+  .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 361.5px));
+    gap: 19px;
+    justify-content: center;
+  }
+
+  .product-grid > *:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    justify-self: center;
+  }
+}

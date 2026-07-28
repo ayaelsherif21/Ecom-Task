@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { useStore } from "../context/StoreContext";
-import { getLineItems, computeTotals, formatMoney } from "../utils/pricing";
+import { getLineItems, computeTotals, formatMoney } from "../../utils/pricing";
 import ReviewLineItem from "./ReviewLineItem";
-import ProductIcon from "./ProductIcon";
+import './ReviewPanel.css'
+import ProductIcon from "../productCard/ProductIcon";
+import { useStore } from "../../context/useStore";
 
 const CATEGORY_ORDER = [
   "cameras",

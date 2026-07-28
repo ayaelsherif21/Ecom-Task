@@ -1,0 +1,55 @@
+
+.variant-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  width: 205px;
+  height: 26px;
+}
+
+.variant-chip {
+  width: 65px;
+  height: 26px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+
+  padding: 1px 3px;
+
+  border: 0.5px solid #d9d9d9;
+  border-radius: 2px;
+  background: #fff;
+
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.variant-chip--active {
+  background: #1df0bb0a;
+  border: 0.5px solid #0aa288;
+}
+
+.variant-chip__image {
+  width: 24px;
+  height: 24px;
+  border-radius: 5px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.variant-chip__swatch {
+  display: none;
+}
+
+.variant-chip__label {
+  font-family: "Gilroy-Medium", sans-serif;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 100%;
+  letter-spacing: 0.6px;
+  color: #444;
+  white-space: nowrap;
+  padding-right: 4px;
+}

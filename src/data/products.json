@@ -151,7 +151,7 @@
       "categoryLabel": "Cameras",
       "name": "Wyze Duo Cam Doorbell",
       "description": "Two cameras. Two views. Double the porch protection.",
-      "learnMore": false,
+      "learnMore": true,
       "badge": null,
       "icon": "doorbell",
       "image": "/products/4.png",
@@ -335,7 +335,7 @@
   ],
   "guarantee": {
     "title": "30-day hassle-free returns",
-    "image": "/products/Bagde.png",
+    "image": "/products/Badge.png",
     "body": "If you're not totally in love with the product, we will refund you 100%.",
     "badgeLabel": "100% Wyze satisfaction guarantee"
   },

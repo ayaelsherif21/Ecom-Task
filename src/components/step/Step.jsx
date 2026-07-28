@@ -1,8 +1,8 @@
-import ProductIcon from "./ProductIcon";
-import ProductCard from "./ProductCard";
-import { useStore } from "../context/StoreContext";
-import { countSelectedForStep } from "../utils/pricing";
-
+import ProductCard from "../productCard/ProductCard";
+import { useStore } from "../../context/useStore";
+import { countSelectedForStep } from "../../utils/pricing";
+import "./Step.css"
+import ProductIcon from "../productCard/ProductIcon";
 export default function Step({ step, isOpen, onToggle }) {
   const { products, quantities, setStep, steps } = useStore();
   const stepProducts = products.filter((p) => p.step === step.id);
@@ -23,7 +23,7 @@ export default function Step({ step, isOpen, onToggle }) {
         aria-expanded={isOpen}
       >
         <div className="step__heading">
-          <span className="step__eyebrow">
+          <span className={`step__eyebrow${isOpen ? " step__eyebrow--open" : ""}`}>
             STEP {step.id} OF {steps.length}
           </span>
           <span className="step__title-row">
