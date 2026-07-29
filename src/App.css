@@ -74,12 +74,20 @@
   }
 }
 
-@media (min-width: 1920px) {
+/* @media (min-width: 1920px) {
   .app__inner {
     max-width: 1392px;
   }
+} */
+@media (min-width: 1440px) {
+  .app__inner {
+    max-width: 1196px;
+    display: grid;
+    grid-template-columns: 768px 399px;
+    gap: 29px;
+    align-items: start;
+  }
 }
-
 
 @media (min-width: 768px) and (max-width: 1439.98px) {
   .product-grid {
@@ -95,7 +103,7 @@
 
 
 /* Ultra-wide (>=1920px): five roomier vertical cards per row. */
-@media (min-width: 1920px) {
+/* @media (min-width: 1920px) {
   .product-grid {
     grid-template-columns: repeat(5, minmax(0, 1fr));
   }
@@ -138,7 +146,7 @@
   .product-card__desc {
     font-size: 10.5px;
   }
-}
+} */
 
 
 /* ---------- responsive tweaks below the two named breakpoints ---------- */
@@ -233,7 +241,7 @@
 
 /* Ultra-wide (>=1920px) review panel: same two-column split as tablet,
    just a bit roomier. */
-@media (min-width: 1920px) {
+/* @media (min-width: 1920px) {
   .review-panel {
     display: grid;
     grid-template-columns: 1fr 340px;
@@ -260,5 +268,22 @@
     padding-top: 0;
     padding-left: 32px;
     border-left: 1px solid #dfe2f0;
+  }
+} */
+
+@media (min-width: 1440px) {
+  .review-panel {
+    display: flex;
+    flex-direction: column;
+    padding: 15px 24px 24px;
+    gap: 5px;
+    width: 399px;
+  }
+
+  .review-panel__checkout-block {
+    border-top: 1px solid #dfe2f0;
+    padding-top: 15px;
+    padding-left: 0;
+    border-left: none;
   }
 }

@@ -7,7 +7,7 @@
 .step {
   position: relative;
   padding: 20px 15px;
-  border-bottom: 1px solid #8f8f8f;
+  border-bottom: none;
 
   /* border-bottom: 1px solid #dfe1ec;
   padding-bottom: 13px; */
@@ -22,7 +22,16 @@
   border-top-width: 0.5px;
   border-bottom-width: 0.5px; */
 }
+.step::after {
+  content: "";
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  bottom: 0;
 
+  height: 1px;
+  background: #8f8f8f;
+}
 .step--open {
   border: 1.5px solid #cfd2e6;
   background: #edf4ff;
@@ -38,12 +47,15 @@
   background: #edf4ff; */
 }
 
+.step--open::after {
+  left: 24px;
+  right: 24px;
+  bottom: 0;
+  background: #8f8f8f;
+}
 .step__header {
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
+  display: block;
   background: none;
   border: none;
   cursor: pointer;
@@ -58,14 +70,9 @@
 .step__heading {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 10px;
+  width: 100%;
   min-width: 0;
-  /* width: 768;
-  height: 12;
-  angle: 0 deg;
-  opacity: 1;
-  padding-right: 15px;
-  padding-left: 15px; */
 }
 
 .step__eyebrow {
@@ -73,19 +80,39 @@
   font-weight: 700;
   letter-spacing: 0.08em;
   color: #9497a8;
-  /* width: 768;
-  height: 12;
-  angle: 0 deg;
-  opacity: 1;
-  padding-right: 15px;
-  padding-left: 15px; */
+}
+
+/* .step__divider {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: #8f8f8f;
+} */
+ .step__divider {
+  display: block;
+  width: auto;              
+  height: 1px;
+  background: #8f8f8f;
+  margin: 0 -15px;         
+}
+
+.step--open .step__divider {
+  margin: 0;                 /* في حالة open الـ padding بتاعت الـ step بتتغير، فمش محتاجين نعدل تاني */
 }
 
 .step__title-row {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+}
+
+.step__title-group {
+  display: flex;
+  align-items: center;
   gap: 10px;
-  border-top: 0.5px solid #1f1f1f;
+  min-width: 0;
 }
 
 .step__icon {
@@ -102,26 +129,13 @@
 }
 
 .step__state {
-  /* /* display: flex; */
+  display: flex;
   align-items: center;
   gap: 8px;
   flex: none;
   color: #5b3df6;
   font-size: 13px;
   font-weight: 700;
-  /* width: 83;
-height: 16;
-gap: 4px;
-angle: 0 deg;
-opacity: 1;
-font-family: Gilroy-Medium;
-font-weight: 400;
-font-size: 14px;
-leading-trim: NONE;
-line-height: 16px;
-letter-spacing: 0px;
-text-align: center;
-color: #4E2FD2; */
 }
 
 .step__chevron {
@@ -167,11 +181,11 @@ opacity: 1; */
 /*------*/
 .product-grid {
   border-radius: 10px;
-  padding: 15px;
+  padding: 10px 0;
   display: grid;
   grid-template-columns: 1fr;
   justify-content: center;
-  gap: 19px;
+  gap: 12px;
   margin-bottom: 8px;
   width: 100%;
   box-sizing: border-box;
@@ -189,7 +203,9 @@ opacity: 1; */
 }
 
 /* ---------- Product Grid Layout ---------- */
-@media (max-width: 390px) {
+
+/* Small phones: single column, products stacked */
+@media (max-width: 575.98px) {
   .product-grid {
     grid-template-columns: 1fr;
     gap: 20px;
@@ -197,15 +213,29 @@ opacity: 1; */
     padding-left: 12px;
     padding-right: 12px;
   }
-}
 
-@media (min-width: 391px) and (max-width: 767.98px) {
-  .product-grid {
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 15px;
+  .product-grid > *:last-child:nth-child(odd) {
+    grid-column: auto;
+    justify-self: stretch;
   }
 }
 
+/* Small/medium tablets: 3 across, remaining items wrap to their own row
+   instead of stretching full-width (that stretch rule was making a lone
+   leftover card blow up huge) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .product-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 15px;
+  }
+
+  .product-grid > *:last-child:nth-child(odd) {
+    grid-column: auto;
+    justify-self: stretch;
+  }
+}
+
+/* Wide tablets / small laptops: 5 across */
 @media (min-width: 768px) and (max-width: 1439.98px) {
   .product-grid {
     grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -218,7 +248,7 @@ opacity: 1; */
   }
 }
 
-@media (min-width: 1440px) and (max-width: 1919.98px) {
+@media (min-width: 1440px) {
   .product-grid {
     grid-template-columns: repeat(2, minmax(0, 361.5px));
     gap: 19px;

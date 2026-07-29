@@ -26,19 +26,25 @@ export default function Step({ step, isOpen, onToggle }) {
           <span className={`step__eyebrow${isOpen ? " step__eyebrow--open" : ""}`}>
             STEP {step.id} OF {steps.length}
           </span>
+
+          <span className="step__divider" aria-hidden="true" />
+
           <span className="step__title-row">
-            <span className="step__icon">
-              <ProductIcon name={step.icon} />
+            <span className="step__title-group">
+              <span className="step__icon">
+                <ProductIcon name={step.icon} />
+              </span>
+              <span className="step__title">{step.title}</span>
             </span>
-            <span className="step__title">{step.title}</span>
+
+            <span className="step__state">
+              <span className="step__count">{selectedCount} selected</span>
+              <span className={`step__chevron${isOpen ? " step__chevron--up" : ""}`}>
+                ▾
+              </span>
+            </span>
           </span>
         </div>
-        <span className="step__state">
-          <span className="step__count">{selectedCount} selected</span>
-          <span className={`step__chevron${isOpen ? " step__chevron--up" : ""}`}>
-            ▾
-          </span>
-        </span>
       </button>
 
       {isOpen && (

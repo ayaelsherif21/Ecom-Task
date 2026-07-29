@@ -1,4 +1,4 @@
-import ReviewPanel from "./components/ReviewPanel/ReviewPanel";
+import ReviewPanel from "./components/reviewPanel/ReviewPanel";
 import "./App.css";
 import Accordion from "./components/step/Accordion";
 import { StoreProvider } from "./context/StoreProvider";

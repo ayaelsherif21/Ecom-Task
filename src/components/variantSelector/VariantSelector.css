@@ -1,14 +1,29 @@
-
-.variant-row {
+/* .variant-row {
   display: flex;
   align-items: center;
   gap: 4px;
-  width: 205px;
-  height: 26px;
+  width: 100%;
+  max-width: 100%;
+  flex-wrap: wrap;
+  overflow: hidden;
+} */
+
+.variant-row {
+  display: flex;
+  gap: 4px;
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
 }
 
+.variant-row::-webkit-scrollbar {
+  display: none;
+}
 .variant-chip {
-  width: 65px;
+  flex: 1 1 0;
+  min-width: 58px;
+  max-width: 65px;
   height: 26px;
 
   display: flex;
@@ -16,7 +31,7 @@
   justify-content: center;
   gap: 4px;
 
-  padding: 1px 3px;
+  padding: 1px 4px;
 
   border: 0.5px solid #d9d9d9;
   border-radius: 2px;
@@ -24,6 +39,8 @@
 
   cursor: pointer;
   transition: all 0.2s ease;
+
+  overflow: hidden;
 }
 
 .variant-chip--active {

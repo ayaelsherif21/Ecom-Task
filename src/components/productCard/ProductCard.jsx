@@ -1,6 +1,6 @@
 import ProductIcon from "./ProductIcon";
 import VariantSelector from "../variantSelector/VariantSelector";
-import QuantityStepper from "../QuantityStepper/QuantityStepper";
+import QuantityStepper from "../quantityStepper/QuantityStepper";
 import { formatMoney } from "../../utils/pricing";
 import "./ProductCard.css";
 import { useStore } from "../../context/useStore";
