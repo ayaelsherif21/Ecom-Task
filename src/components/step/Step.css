@@ -3,15 +3,24 @@
   flex-direction: column;
   gap: 13px;
 }
-
 .step {
   position: relative;
+  background: transparent;
+  border: 1.5px solid transparent;
+  border-radius: 14px;
+  padding: 14px 16px;
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease;
+}
+/* .step {
+  position: relative;
   padding: 20px 15px;
-  border-bottom: none;
+  border-bottom: none; */
 
-  /* border-bottom: 1px solid #dfe1ec;
+/* border-bottom: 1px solid #dfe1ec;
   padding-bottom: 13px; */
-  /* width: 768;
+/* width: 768;
   height: 67;
   gap: 3px;
   opacity: 1;
@@ -21,23 +30,28 @@
   padding-left: 15px;
   border-top-width: 0.5px;
   border-bottom-width: 0.5px; */
-}
-.step::after {
+/* }*/
+*/ .step::after {
   content: "";
   position: absolute;
-  left: 20px;
-  right: 20px;
-  bottom: 0;
-
+  left: 0;
+  right: 0;
+  bottom: -6px; /* ضبط مكان الخط بين الكروت */
   height: 1px;
-  background: #8f8f8f;
+  background: #e2e4ed;
 }
 .step--open {
+  border-color: #cfd2e6;
+  background: #edf4ff;
+  padding: 14px 16px;
+}
+
+/* .step--open {
   border: 1.5px solid #cfd2e6;
   background: #edf4ff;
   border-radius: 14px;
-  padding: 4px 0 20px;
-  /* width: 768;
+  padding: 4px 0 20px; */
+/* width: 768;
   height: 695;
   gap: 5px;
   angle: 0 deg;
@@ -45,15 +59,28 @@
   border-radius: 10px;
   padding-top: 15px;
   background: #edf4ff; */
-}
+/* } */
 
-.step--open::after {
-  left: 24px;
-  right: 24px;
-  bottom: 0;
-  background: #8f8f8f;
+.step::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 1px;
+  background: #e2e4ed;
 }
 .step__header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  padding: 0;
+}
+/* .step__header {
   width: 100%;
   display: block;
   background: none;
@@ -61,18 +88,34 @@
   cursor: pointer;
   text-align: left;
   padding: 0 20px;
-}
+} */
 
-.step--open .step__header {
+/* .step--open .step__header {
   padding: 16px 24px 4px;
+} */
+.step--open .step__header {
+  padding: 0;
 }
 
-.step__heading {
+/* .step__heading {
   display: flex;
   flex-direction: column;
   gap: 10px;
   width: 100%;
   min-width: 0;
+} */
+.step__divider {
+  display: block;
+  height: 1px;
+  background: #dcdfe8;
+  /* سحب الخط سالب بقدر padding الأب ليبدأ ويفتح لنهاية حواف الكارت تماماً */
+  margin: 10px -16px 14px -16px;
+}
+
+/* Eyebrow Container */
+.step__eyebrow-container {
+  width: 100%;
+  line-height: 1;
 }
 
 .step__eyebrow {
@@ -80,6 +123,7 @@
   font-weight: 700;
   letter-spacing: 0.08em;
   color: #9497a8;
+  display: block;
 }
 
 /* .step__divider {
@@ -88,16 +132,16 @@
   height: 1px;
   background: #8f8f8f;
 } */
- .step__divider {
+/* .step__divider {
   display: block;
   width: auto;              
   height: 1px;
   background: #8f8f8f;
   margin: 0 -15px;         
-}
+} */
 
 .step--open .step__divider {
-  margin: 0;                 /* في حالة open الـ padding بتاعت الـ step بتتغير، فمش محتاجين نعدل تاني */
+  margin: 0; /* في حالة open الـ padding بتاعت الـ step بتتغير، فمش محتاجين نعدل تاني */
 }
 
 .step__title-row {
@@ -155,13 +199,17 @@ opacity: 1; */
   transform: rotate(180deg);
 }
 
-.step__body {
+/* .step__body {
   padding: 0 24px;
-}
+} */
 /* .line-top{
     border-top: 0.5px solid #1F1F1F;
 
 } */
+.step__body {
+  padding-top: 12px;
+}
+
 .btn--next {
   display: block;
   margin: 0 auto;

@@ -18,14 +18,14 @@
       "id": 3,
       "key": "sensors",
       "title": "Choose your sensors",
-      "icon": "layers",
+      "icon": "sensors",
       "nextLabel": "Next: Add extra protection"
     },
     {
       "id": 4,
       "key": "protection",
       "title": "Add extra protection",
-      "icon": "grid",
+      "icon": "protection",
       "nextLabel": null
     }
   ],
@@ -205,8 +205,8 @@
       "description": "Unlimited cloud storage for every camera, person detection, and 24/7 monitoring.",
       "learnMore": true,
       "badge": null,
-      "icon": "shield",
-      "unit": "/mo",
+      "icon": "review",
+      "unit": "/",
       "exclusiveGroup": "plan",
       "variants": null,
       "noVariantPricing": { "compareAtPrice": 12.99, "price": 9.99 },
@@ -317,7 +317,7 @@
       "description": "Extended coverage for accidental damage and hardware failure.",
       "learnMore": true,
       "badge": "Save 29%",
-      "icon": "protection",
+      "icon": "review",
       "unit": "",
       "variants": null,
       "noVariantPricing": { "compareAtPrice": 34.99, "price": 24.99 },

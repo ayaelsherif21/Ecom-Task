@@ -2,6 +2,7 @@ import QuantityStepper from "../quantityStepper/QuantityStepper";
 import { formatMoney } from "../../utils/pricing";
 import './ReviewPanel.css'
 import './ReviewLineItem.css'
+import ProductIcon from "../productCard/ProductIcon";
 export default function ReviewLineItem({ item, onChangeQty }) {
   const lineCompare =
     item.compareAtPrice != null ? item.compareAtPrice * item.qty : null;
@@ -12,7 +13,7 @@ export default function ReviewLineItem({ item, onChangeQty }) {
   return (
     <div className="review-line">
 
-      <div className="review-line__thumb">
+      {/* <div className="review-line__thumb">
         {item.image ? (
           <img
             src={item.image}
@@ -21,7 +22,20 @@ export default function ReviewLineItem({ item, onChangeQty }) {
         ) : (
           <div className="review-line__placeholder" />
         )}
+      </div> */}
+      <div className="review-line__thumb">
+        {item.image ? (
+          <img
+            src={item.image}
+            alt={item.name}
+          />
+        ) : item.icon ? (
+          <ProductIcon name={item.icon} />
+        ) : (
+          <div className="review-line__placeholder" />
+        )}
       </div>
+
 
       <div className="review-line__name">
         {item.name}

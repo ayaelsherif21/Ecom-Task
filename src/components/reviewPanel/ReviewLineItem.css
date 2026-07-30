@@ -15,10 +15,10 @@
   overflow: hidden;
 }
 
-.review-line__thumb img {
+.review-line__thumb img,
+.review-line__thumb svg {
   width: 34px;
   height: 34px;
-
   object-fit: contain;
 }
 .review-line__name {
