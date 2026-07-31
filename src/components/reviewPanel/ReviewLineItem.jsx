@@ -2,7 +2,7 @@ import QuantityStepper from "../quantityStepper/QuantityStepper";
 import { formatMoney } from "../../utils/pricing";
 import "./ReviewPanel.css";
 import "./ReviewLineItem.css";
-import ProductIcon from "../productCard/ProductIcon";
+import ProductIcon from "../step/StepIcon";
 export default function ReviewLineItem({ item, onChangeQty }) {
   const lineCompare =
     item.compareAtPrice != null ? item.compareAtPrice * item.qty : null;

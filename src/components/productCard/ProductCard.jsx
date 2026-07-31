@@ -1,4 +1,4 @@
-import ProductIcon from "./ProductIcon";
+import ProductIcon from "../step/StepIcon";
 import VariantSelector from "../variantSelector/VariantSelector";
 import QuantityStepper from "../quantityStepper/QuantityStepper";
 import { formatMoney } from "../../utils/pricing";

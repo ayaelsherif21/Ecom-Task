@@ -2,7 +2,7 @@ import ProductCard from "../productCard/ProductCard";
 import { useStore } from "../../context/useStore";
 import { countSelectedForStep } from "../../utils/pricing";
 import "./Step.css"
-import ProductIcon from "../productCard/ProductIcon";
+import ProductIcon from "./StepIcon";
 export default function Step({ step, isOpen, onToggle }) {
   const { products, quantities, setStep, steps } = useStore();
   const stepProducts = products.filter((p) => p.step === step.id);

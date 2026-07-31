@@ -2,7 +2,7 @@ import { useState } from "react";
 import { getLineItems, computeTotals, formatMoney } from "../../utils/pricing";
 import ReviewLineItem from "./ReviewLineItem";
 import './ReviewPanel.css';
-import ProductIcon from "../productCard/ProductIcon";
+import ProductIcon from "../step/StepIcon";
 import { useStore } from "../../context/useStore";
 
 const CATEGORY_ORDER = [

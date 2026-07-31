@@ -6,9 +6,9 @@
 .step {
   position: relative;
   background: transparent;
-  border-radius: 14px;
+  
   padding: 14px 16px;
-  border-bottom: 1px solid #E1E3EE;
+  border-bottom: 1px solid #7c7c7c;
   transition:
     background-color 0.25s ease,
     border-color 0.25s ease;
@@ -18,6 +18,11 @@
   background: #edf4ff;
   border-bottom-color: #cfd2e6;
   padding: 14px 16px;
+  border-radius: 14px;
+}
+
+.step:not(:first-child).step--open {
+  margin-top: 3px;
 }
 
 .step__header {
@@ -30,15 +35,18 @@
   text-align: left;
   padding: 0;
 }
-
+.step__header:focus {
+  outline: none;
+}
 .step--open .step__header {
   padding: 0;
 }
-
 .step__divider {
   display: block;
-  height: 1px;
-  background: #E1E3EE;
+  height: 0;
+  /* background: #1F1F1F; */
+      border-top:1px solid #1f1f1f;
+
   margin: 10px -16px 14px -16px;
 }
 
@@ -55,6 +63,7 @@
   color: #484848;
   display: block;
 }
+
 
 .step__title-row {
   display: flex;
@@ -116,11 +125,10 @@
   margin: 0 auto;
   padding: 10px 24px;
   border-radius: 7px;
-  border: 1px solid #5b3df6;
-  background: #ffffff;
-  color: #5b3df6;
-  font-weight: 700;
-  font-size: 16px;
+  border: 1px solid #4E2FD2;
+  color: #4E2FD2;
+  font-weight: 600;
+  font-size: 17px;
 }
 
 .btn--next:hover {

@@ -1,7 +1,3 @@
-// Normalizes the raw product JSON into a flat list of "variants" so the rest
-// of the app never has to special-case "has variants" vs "doesn't have variants".
-// A product with no color options becomes a single implicit variant whose id
-// equals the product id.
 export function normalizeProducts(rawProducts) {
   return rawProducts.map((product) => {
     if (product.variants && product.variants.length) {
