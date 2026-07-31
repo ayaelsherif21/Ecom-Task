@@ -31,7 +31,9 @@ No backend is required — everything is driven by the JSON file at
   quantities). `src/utils/pricing.js` normalizes that JSON — a product with no
   color options becomes a single "implicit" variant, so the rest of the app
   never branches on "has variants vs. doesn't."
-- **State**: `src/context/StoreContext.jsx` holds all builder state
+- - **State**: `src/context/StoreContext.js` defines the context,
+  `StoreProvider.jsx` manages the reducer and state,
+  and `useStore.js` exposes the custom hook used throughout the app.
   (`quantities` keyed by variant id, `activeVariants` keyed by product id,
   `activeStep`) in a `useReducer`, exposed via a `useStore()` hook. Nothing is
   hardcoded per-product; `ProductCard`, `ReviewLineItem`, `VariantSelector`,
@@ -113,14 +115,24 @@ No backend is required — everything is driven by the JSON file at
 ```
 src/
   data/products.json       - steps, products, extras (the single source of truth)
-  context/StoreContext.jsx - state (quantities, active variants, active step) + localStorage sync
+context/
+  StoreContext.js     - React context
+  StoreProvider.jsx   - reducer, state management, localStorage sync
+  useStore.js         - custom hook
   utils/pricing.js         - JSON normalization, totals, "N selected" math
   utils/storage.js         - localStorage read/write/clear
-  components/
-    Accordion.jsx / Step.jsx     - the 4-step builder
-    ProductCard.jsx              - badge, image, variants, stepper, price
-    VariantSelector.jsx          - color chip row
-    QuantityStepper.jsx          - shared +/- control (used on cards and in the review panel)
-    ReviewPanel.jsx / ReviewLineItem.jsx - the right-hand summary
-    ProductIcon.jsx               - small SVG icon set standing in for product photography
+ components/
+  productCard/
+    ProductCard.jsx
+  quantityStepper/
+    QuantityStepper.jsx
+  reviewPanel/
+    ReviewPanel.jsx
+    ReviewLineItem.jsx
+  step/
+    Accordion.jsx
+    Step.jsx
+    StepIcon.jsx
+  variantSelector/
+    VariantSelector.jsx
 ```
