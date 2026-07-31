@@ -1,10 +1,10 @@
 const ICON_PATHS = {
-  camera: "/products/icons/livestream.svg",
-  shield: "/products/icons/favicon.svg",
-  sensors: "/products/icons/Group 1417.svg",
-  protection: "/products/icons/Group 1418.svg",
-  review:"/products/icons/review.svg",
-  truck: "/products/icons/Vector.svg", 
+  camera: "/assets/icons/livestream.svg",
+  shield: "/assets/icons/favicon.svg",
+  sensors: "/assets/icons/Group 1417.svg",
+  protection: "/assets/icons/Group 1418.svg",
+  review:"/assets/icons/review.svg",
+  truck: "/assets/icons/Vector.svg", 
 };
 
 export default function ProductIcon({ name, className }) {
