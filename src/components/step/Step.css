@@ -1,75 +1,25 @@
 .accordion {
   display: flex;
   flex-direction: column;
-  gap: 13px;
+  gap: 0;
 }
 .step {
   position: relative;
   background: transparent;
-  border: 1.5px solid transparent;
   border-radius: 14px;
   padding: 14px 16px;
+  border-bottom: 1px solid #E1E3EE;
   transition:
     background-color 0.25s ease,
     border-color 0.25s ease;
 }
-/* .step {
-  position: relative;
-  padding: 20px 15px;
-  border-bottom: none; */
 
-/* border-bottom: 1px solid #dfe1ec;
-  padding-bottom: 13px; */
-/* width: 768;
-  height: 67;
-  gap: 3px;
-  opacity: 1;
-  padding-top: 20px;
-  padding-right: 15px;
-  padding-bottom: 20px;
-  padding-left: 15px;
-  border-top-width: 0.5px;
-  border-bottom-width: 0.5px; */
-/* }*/
-*/ .step::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -6px; /* ضبط مكان الخط بين الكروت */
-  height: 1px;
-  background: #e2e4ed;
-}
 .step--open {
-  border-color: #cfd2e6;
   background: #edf4ff;
+  border-bottom-color: #cfd2e6;
   padding: 14px 16px;
 }
 
-/* .step--open {
-  border: 1.5px solid #cfd2e6;
-  background: #edf4ff;
-  border-radius: 14px;
-  padding: 4px 0 20px; */
-/* width: 768;
-  height: 695;
-  gap: 5px;
-  angle: 0 deg;
-  opacity: 1;
-  border-radius: 10px;
-  padding-top: 15px;
-  background: #edf4ff; */
-/* } */
-
-.step::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -6px;
-  height: 1px;
-  background: #e2e4ed;
-}
 .step__header {
   width: 100%;
   display: flex;
@@ -80,35 +30,15 @@
   text-align: left;
   padding: 0;
 }
-/* .step__header {
-  width: 100%;
-  display: block;
-  background: none;
-  border: none;
-  cursor: pointer;
-  text-align: left;
-  padding: 0 20px;
-} */
 
-/* .step--open .step__header {
-  padding: 16px 24px 4px;
-} */
 .step--open .step__header {
   padding: 0;
 }
 
-/* .step__heading {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 100%;
-  min-width: 0;
-} */
 .step__divider {
   display: block;
   height: 1px;
-  background: #dcdfe8;
-  /* سحب الخط سالب بقدر padding الأب ليبدأ ويفتح لنهاية حواف الكارت تماماً */
+  background: #E1E3EE;
   margin: 10px -16px 14px -16px;
 }
 
@@ -119,29 +49,11 @@
 }
 
 .step__eyebrow {
-  font-size: 10.5px;
-  font-weight: 700;
+  font-size: 12px;
+  font-weight: 400;
   letter-spacing: 0.08em;
-  color: #9497a8;
+  color: #484848;
   display: block;
-}
-
-/* .step__divider {
-  display: block;
-  width: 100%;
-  height: 1px;
-  background: #8f8f8f;
-} */
-/* .step__divider {
-  display: block;
-  width: auto;              
-  height: 1px;
-  background: #8f8f8f;
-  margin: 0 -15px;         
-} */
-
-.step--open .step__divider {
-  margin: 0; /* في حالة open الـ padding بتاعت الـ step بتتغير، فمش محتاجين نعدل تاني */
 }
 
 .step__title-row {
@@ -160,8 +72,8 @@
 }
 
 .step__icon {
-  width: 20px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
   flex: none;
   color: #372e6b;
 }
@@ -189,23 +101,12 @@
   line-height: 1;
   transition: transform 0.15s ease;
   color: #5b3df6;
-  /* width: 12;
-height: 12;
-angle: 0 deg;
-opacity: 1; */
 }
 
 .step__chevron--up {
   transform: rotate(180deg);
 }
 
-/* .step__body {
-  padding: 0 24px;
-} */
-/* .line-top{
-    border-top: 0.5px solid #1F1F1F;
-
-} */
 .step__body {
   padding-top: 12px;
 }
@@ -233,7 +134,7 @@ opacity: 1; */
   display: grid;
   grid-template-columns: 1fr;
   justify-content: center;
-  gap: 12px;
+  gap: 8px;
   margin-bottom: 8px;
   width: 100%;
   box-sizing: border-box;
@@ -246,13 +147,13 @@ opacity: 1; */
 .product-card__media img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  border-radius: inherit;
+  object-fit: contain; 
+  display: block;
 }
 
 /* ---------- Product Grid Layout ---------- */
 
-/* Small phones: single column, products stacked */
+/* Small phones */
 @media (max-width: 575.98px) {
   .product-grid {
     grid-template-columns: 1fr;
@@ -268,9 +169,6 @@ opacity: 1; */
   }
 }
 
-/* Small/medium tablets: 3 across, remaining items wrap to their own row
-   instead of stretching full-width (that stretch rule was making a lone
-   leftover card blow up huge) */
 @media (min-width: 576px) and (max-width: 767.98px) {
   .product-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -283,11 +181,11 @@ opacity: 1; */
   }
 }
 
-/* Wide tablets / small laptops: 5 across */
+/* Wide tablets / small laptops */
 @media (min-width: 768px) and (max-width: 1439.98px) {
   .product-grid {
     grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: 12px;
+    gap: 8px;
   }
 
   .product-grid > *:last-child:nth-child(odd) {
@@ -299,7 +197,7 @@ opacity: 1; */
 @media (min-width: 1440px) {
   .product-grid {
     grid-template-columns: repeat(2, minmax(0, 361.5px));
-    gap: 19px;
+    gap: 12px;
     justify-content: center;
   }
 

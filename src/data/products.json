@@ -206,7 +206,7 @@
       "learnMore": true,
       "badge": null,
       "icon": "review",
-      "unit": "/",
+      "unit": "/mo",
       "exclusiveGroup": "plan",
       "variants": null,
       "noVariantPricing": { "compareAtPrice": 12.99, "price": 9.99 },
@@ -328,6 +328,7 @@
     {
       "id": "fast-shipping",
       "name": "Fast Shipping",
+      "category": "shipping",
       "compareAtPrice": 5.99,
       "priceLabelOverride": "FREE",
       "icon": "truck"

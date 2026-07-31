@@ -1,3 +1,4 @@
+
 * {
   box-sizing: border-box;
 }
@@ -10,9 +11,7 @@ body,
 
 body {
   margin: 0;
-  font-family: Gilroy-SemiBold, Helvetica, Arial, sans-serif;
-  /* font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Helvetica, Arial, sans-serif; */
+  font-family: "Plus Jakarta Sans", sans-serif;
   background: #eef1f5;
   color: #1a1a1a;
   -webkit-font-smoothing: antialiased;

@@ -54,15 +54,11 @@
   font-size: 22px;
 }
 
-.price--total.price--compare {
-  font-size: 13px;
-}
 
 @media (min-width: 1440px) and (max-width: 1919.98px) {
   .app__inner {
     max-width: 1196px;
     display: grid;
-    /* grid-template-columns: 768fr 399fr; */
     grid-template-columns: 768px 399px;
     gap: 29px;
     align-items: start;
@@ -74,11 +70,6 @@
   }
 }
 
-/* @media (min-width: 1920px) {
-  .app__inner {
-    max-width: 1392px;
-  }
-} */
 @media (min-width: 1440px) {
   .app__inner {
     max-width: 1196px;
@@ -101,60 +92,12 @@
   }
 }
 
-
-/* Ultra-wide (>=1920px): five roomier vertical cards per row. */
-/* @media (min-width: 1920px) {
-  .product-grid {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-  }
-
-  .product-grid > *:last-child:nth-child(odd) {
-    grid-column: auto;
-    justify-self: stretch;
-  }
-
-  .product-card {
-    width: 100%;
-    height: auto;
-    flex: none;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 10px;
-    padding: 10px;
-  }
-
-  .product-card__media {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 202.6 / 152.1;
-    flex: none;
-  }
-
-  .product-card__media svg {
-    width: 42px;
-    height: 42px;
-  }
-
-  .product-card__body {
-    width: auto;
-  }
-
-  .product-card__title {
-    font-size: 12.5px;
-  }
-
-  .product-card__desc {
-    font-size: 10.5px;
-  }
-} */
-
-
-/* ---------- responsive tweaks below the two named breakpoints ---------- */
-
+/* ---------- responsive breakpoints ---------- */
 @media (max-width: 640px) {
   .app {
     padding: 16px 12px 48px;
     padding-top: 31px;
+    background: #EDF4FF;
   }
 
   .app__inner {
@@ -191,99 +134,5 @@
 
   .review-panel {
     padding: 15px 16px 20px;
-  }
-}
-
-/* @media (min-width: 560px) and (max-width: 767.98px) {
-  .product-grid {
-    grid-template-columns: repeat(2, 224.6px);
-  }
-}
-@media (min-width: 1440px) and (max-width: 1919.98px) {
-  .product-grid {
-    grid-template-columns: repeat(2, 361.5px);
-  }
-} */
-
-/* ---------- Tablet (768px-1439px) review panel ----------
-   Splits into two columns: itemized product/shipping details on the
-   left, guarantee badge + total + checkout button on the right - both
-   columns start level with the "Cameras" group, so the left column
-   keeps growing taller than the right as more groups are added below. */
-@media (min-width: 768px) and (max-width: 1439.98px) {
-  .review-panel {
-    display: grid;
-    grid-template-columns: 1fr minmax(200px, 260px);
-    column-gap: 24px;
-    row-gap: 0;
-    align-items: start;
-  }
-
-  .review-panel__title,
-  .review-panel__subtitle {
-    grid-column: 1 / -1;
-  }
-
-  .review-group {
-    grid-column: 1;
-  }
-
-  .review-panel__checkout-block {
-    grid-column: 2;
-    grid-row: 3;
-    align-self: start;
-    border-top: none;
-    padding-top: 0;
-    padding-left: 24px;
-    border-left: 1px solid #dfe2f0;
-  }
-}
-
-/* Ultra-wide (>=1920px) review panel: same two-column split as tablet,
-   just a bit roomier. */
-/* @media (min-width: 1920px) {
-  .review-panel {
-    display: grid;
-    grid-template-columns: 1fr 340px;
-    column-gap: 40px;
-    row-gap: 0;
-    align-items: start;
-    padding: 24px 32px 32px;
-  }
-
-  .review-panel__title,
-  .review-panel__subtitle {
-    grid-column: 1 / -1;
-  }
-
-  .review-group {
-    grid-column: 1;
-  }
-
-  .review-panel__checkout-block {
-    grid-column: 2;
-    grid-row: 3;
-    align-self: start;
-    border-top: none;
-    padding-top: 0;
-    padding-left: 32px;
-    border-left: 1px solid #dfe2f0;
-  }
-} */
-
-@media (min-width: 1440px) {
-  .review-panel {
-    display: flex;
-    flex-direction: column;
-    padding: 15px 24px 24px;
-    gap: 5px;
-    width: 399px;
-  }
-
-  .review-panel__checkout-block {
-    border-top: 1px solid #dfe2f0;
-    padding-top: 15px;
-    padding-left: 0;
-    border-left: none;
   }
 }

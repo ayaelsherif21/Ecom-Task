@@ -1,7 +1,7 @@
 import QuantityStepper from "../quantityStepper/QuantityStepper";
 import { formatMoney } from "../../utils/pricing";
-import './ReviewPanel.css'
-import './ReviewLineItem.css'
+import "./ReviewPanel.css";
+import "./ReviewLineItem.css";
 import ProductIcon from "../productCard/ProductIcon";
 export default function ReviewLineItem({ item, onChangeQty }) {
   const lineCompare =
@@ -9,44 +9,41 @@ export default function ReviewLineItem({ item, onChangeQty }) {
 
   const lineSale =
     item.priceLabelOverride || formatMoney(item.price * item.qty);
+  const isPlan = item.category === "plan";
 
   return (
-    <div className="review-line">
-
-      {/* <div className="review-line__thumb">
-        {item.image ? (
-          <img
-            src={item.image}
-            alt={item.name}
-          />
-        ) : (
-          <div className="review-line__placeholder" />
-        )}
-      </div> */}
+    <div className={`review-line ${isPlan ? "review-line--plan" : ""}`}>
       <div className="review-line__thumb">
         {item.image ? (
-          <img
-            src={item.image}
-            alt={item.name}
-          />
+          <img src={item.image} alt={item.name} />
         ) : item.icon ? (
-          <ProductIcon name={item.icon} />
+          <ProductIcon name={item.icon} className="review-line__icon" />
         ) : (
           <div className="review-line__placeholder" />
         )}
       </div>
 
-
       <div className="review-line__name">
-        {item.name}
+        {item.name === "Cam Unlimited" ? (
+          <>
+            <span>Cam </span>
+            <span className="review-line__name--highlight">Unlimited</span>
+          </>
+        ) : (
+          item.name
+        )}
       </div>
 
-      <QuantityStepper
-        size="sm"
-        qty={item.qty}
-        min={item.minQuantity || 0}
-        onChange={onChangeQty}
-      />
+      {!isPlan ? (
+        <QuantityStepper
+          size="sm"
+          qty={item.qty}
+          min={item.minQuantity || 0}
+          onChange={onChangeQty}
+        />
+      ) : (
+        <div />
+      )}
 
       <div className="review-line__price">
         {lineCompare && (
@@ -60,7 +57,6 @@ export default function ReviewLineItem({ item, onChangeQty }) {
           {item.unit}
         </span>
       </div>
-
     </div>
   );
 }

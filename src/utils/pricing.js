@@ -66,6 +66,7 @@ export function getLineItems(products, quantities) {
           name: product.name,
           variantLabel: variant.label,
           image: product.image,
+          icon: product.icon,
           category: product.category,
           categoryLabel: product.categoryLabel,
           unit: product.unit || "",
