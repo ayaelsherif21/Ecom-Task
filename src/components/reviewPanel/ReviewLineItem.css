@@ -10,6 +10,18 @@
   overflow: hidden;
 }
 
+.review-line__thumb img{
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+}
+.review-line__icon {
+  width: 24px;
+  height: 24px;
+  background-color: transparent;
+}
+
+
 .review-line--plan .review-line__thumb {
   background: transparent; 
   border-radius: 0;
@@ -20,16 +32,16 @@
 
 .review-line--plan .review-line__thumb img,
 .review-line--plan .review-line__thumb svg {
-  width: 26px;       
-  height: 26px;
+  width: 28px;       
+  height: 28px;
   object-fit: contain;
 }
 
 .review-line--extra .review-line__thumb {
   background: #ffffff;      
   border-radius: 10px;    
-  width: 42px;
-  height: 42px;
+  width: 36px;
+  height: 36px;
   padding: 6px;
   box-sizing: border-box;
 }
@@ -40,38 +52,18 @@
   height: 100%;
   object-fit: contain;
 }
-.review-line__thumb img{
-  width: 34px;
-  height: 34px;
-  object-fit: contain;
-}
-.review-line__icon {
-  width: 24px;
-  height: 24px;
-  background-color: transparent;
-}
+
 .review-line__name {
-  font-size: 13px;
-
-  font-weight: 600;
-
+  font-size: 14px;
+  font-weight: 500;
   color: #232323;
-
   line-height: 1.2;
 }
 .review-line__price {
   display: flex;
-
   flex-direction: column;
-
   align-items: flex-end;
-
   min-width: 58px;
-}
-.review-line__name {
-  font-size: 13px;
-  font-weight: 600;
-  color: #232323;
 }
 
 .review-line__name--highlight {
@@ -79,7 +71,7 @@
   font-weight: 700;
 }
 .review-line__price .price--compare {
-  font-size: 12px;
+  font-size: 14px;
   color: #8f9095;
   text-decoration: line-through;
 }

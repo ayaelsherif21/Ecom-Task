@@ -49,6 +49,7 @@ export default function ReviewLineItem({ item, onChangeQty }) {
         {lineCompare && (
           <span className="price price--compare">
             {formatMoney(lineCompare)}
+             {item.unit}
           </span>
         )}
 

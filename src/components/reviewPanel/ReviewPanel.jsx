@@ -80,6 +80,7 @@ export default function ReviewPanel() {
                 <div className="review-line__price">
                   <span className="price price--compare price--small">
                     {formatMoney(extra.compareAtPrice)}
+                    
                   </span>
                   <span
                     className="price price--active price--small"
